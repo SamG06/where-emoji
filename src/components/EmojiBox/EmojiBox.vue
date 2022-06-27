@@ -43,11 +43,23 @@ const emojiStore = useEmojiOptionStore();
 const emojiToFind = emojiStore.singleEmoji;
 
 // eslint-disable-next-line max-len
-const emojiNotToFind = emojiStore.allRandomButThisEmoji(emojiToFind).slice(0, props.mode.amount - 1);
+const emojiNotToFind = emojiStore.allRandomButThisEmoji(emojiToFind);
 
-emojiNotToFind.push(emojiToFind);
+const makeRepeated = (arr, repeats) => Array.from({ length: repeats }, () => arr).flat();
 
-const displayingEmoji = emojiNotToFind;
+const notToFindShuffle = makeRepeated(emojiNotToFind, 10);
+
+// shuffle emoji
+for (let i = notToFindShuffle.length - 1; i > 0; i += -1) {
+  const j = Math.floor(Math.random() * (i + 1));
+  const temp = notToFindShuffle[i];
+  notToFindShuffle[i] = emojiNotToFind[j];
+  notToFindShuffle[j] = temp;
+}
+
+notToFindShuffle.unshift(emojiToFind);
+
+const displayingEmoji = notToFindShuffle.slice(0, props.mode.amount);
 
 </script>
 
