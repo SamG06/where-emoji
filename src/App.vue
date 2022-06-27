@@ -10,7 +10,7 @@
     </n-space>
     <router-view></router-view>
     <EmojiBox
-      :mode="{text: 'easy', amount: 10 }"
+      :mode="{text: 'easy', amount: 30 }"
     />
   </n-config-provider>
 </template>
