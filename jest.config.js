@@ -12,4 +12,5 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jsdom',
+  setupFiles: ['jest-canvas-mock'],
 };
