@@ -9,16 +9,12 @@
       </n-button>
     </n-space>
     <router-view></router-view>
-    <EmojiBox
-      :mode="{text: 'easy', amount: 30 }"
-    />
   </n-config-provider>
 </template>
 
 <script setup>
 import { darkTheme } from 'naive-ui';
 import { ref } from 'vue';
-import EmojiBox from './components/EmojiBox/EmojiBox.vue';
 
 const theme = ref(null);
 </script>
