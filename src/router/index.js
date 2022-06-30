@@ -1,20 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import GetStarted from '@/views/GetStartedView.vue';
-import GameView from '@/views/GameView.vue';
-
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
       name: 'GetStarted',
-      component: GetStarted,
+      component: () => import('@/views/GetStartedView.vue'),
     },
     {
       path: '/play',
       name: 'GameView',
-      component: GameView,
+      component: () => import('@/views/GameView.vue'),
     },
   ],
 });
