@@ -28,16 +28,12 @@ describe('EmojiBox.vue', () => {
   });
 
   it('renders the right amount of emoji based on mode', () => {
-    const emoji = wrapper.findAll('div.emoji');
-
-    expect(emoji.length).toBe(mode.amount);
+    expect(wrapper.findAll('div.emoji')).toHaveLength(mode.amount);
   });
 
   it('renders only one right emote', () => {
     const emojiToFind = wrapper.find('.emoji-to-find').text();
 
-    const emojiToChoose = wrapper.findAll(`div[data-emoji="${emojiToFind}"]`);
-
-    expect(emojiToChoose.length).toBe(1);
+    expect(wrapper.findAll(`div[data-emoji="${emojiToFind}"]`)).toHaveLength(1);
   });
 });
