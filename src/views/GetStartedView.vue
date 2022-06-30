@@ -27,6 +27,7 @@
         style="margin-top:20px"
         size="large"
         type="primary"
+        @click="$router.push('/play')"
       >
         Begin Game
       </n-button>
@@ -36,8 +37,6 @@
 
 <script setup>
 import { useEmojiOptionStore } from '@/store/emojiOptionStore.js';
-import twemoji from 'twemoji';
-import { ref } from 'vue';
 
 const { emojiOptions } = useEmojiOptionStore();
 </script>
