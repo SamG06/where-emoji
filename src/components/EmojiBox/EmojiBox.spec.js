@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { mount } from '@vue/test-utils';
 import { setActivePinia, createPinia } from 'pinia';
+import twemoji from 'twemoji';
 import EmojiBox from './EmojiBox.vue';
 
 describe('EmojiBox.vue', () => {
@@ -17,6 +18,12 @@ describe('EmojiBox.vue', () => {
     propsData: { mode },
     global: {
       plugins: [createPinia()],
+      directives: {
+        twemoji: (el) => {
+          // eslint-disable-next-line no-param-reassign
+          el.innerHTML = twemoji.parse(el.innerHTML);
+        },
+      },
     },
   });
 
