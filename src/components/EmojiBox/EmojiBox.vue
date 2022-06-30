@@ -7,11 +7,12 @@
       {{ emojiToFind }}
     </div>
     <p> Displaying {{ props.amount }} emoji's!</p>
-
+    <div ref="emojisContainer"></div>
     <div class="emojis-container">
       <div
         v-for="emoji in displayingEmoji"
         :key="emoji"
+        v-twemoji
         :data-emoji="emoji"
         class="emoji"
       >
@@ -26,7 +27,22 @@
 <script setup>
 // import { storeToRefs } from 'pinia';
 import { useEmojiOptionStore } from '@/store/emojiOptionStore.js';
+import p5 from 'p5';
+import { onMounted, ref } from 'vue';
 import EmojiBanner from '../EmojiBanner/EmojiBanner.vue';
+
+const emojisContainer = ref(null);
+
+onMounted(() => {
+  const script = (p) => {
+    p.setup = (_) => {
+      const canvas = p.createCanvas(500, 500);
+      canvas.parent(emojisContainer.value);
+    };
+  };
+
+  new p5(script);
+});
 
 const props = defineProps({
   mode: {
@@ -36,8 +52,6 @@ const props = defineProps({
 });
 
 const emojiStore = useEmojiOptionStore();
-
-// const { emojiOptions } = storeToRefs(emojiStore);
 
 // Actions
 const emojiToFind = emojiStore.singleEmoji;
@@ -60,6 +74,8 @@ for (let i = notToFindShuffle.length - 1; i > 0; i += -1) {
 notToFindShuffle.unshift(emojiToFind);
 
 const displayingEmoji = notToFindShuffle.slice(0, props.mode.amount);
+
+// p5 canvas
 
 </script>
 
