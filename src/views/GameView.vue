@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import EmojiBox from '@/components/EmojiBox/EmojiBox.vue';
 
 </script>

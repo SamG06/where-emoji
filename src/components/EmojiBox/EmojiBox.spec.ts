@@ -28,7 +28,7 @@ describe('EmojiBox.vue', () => {
   });
 
   it('renders the right amount of emoji based on mode', () => {
-    expect(wrapper.findAll('div.emoji')).toHaveLength(mode.amount);
+    expect(wrapper.findAll('.emoji-shell .emoji')).toHaveLength(mode.amount);
   });
 
   it('renders only one right emote', () => {
